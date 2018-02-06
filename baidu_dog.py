@@ -24,8 +24,8 @@ headers = {
 
 def recall(pet_id):
     url = 'https://pet-chain.baidu.com/data/market/unsalePet'
-    timestramp = int(round(time.time() * 1000))
-    payload = {"petId": pet_id, "requestId": timestramp, "appId": 1, "tpl": ""}
+    timestamp = int(round(time.time() * 1000))
+    payload = {"petId": pet_id, "requestId": timestamp, "appId": 1, "tpl": ""}
     res = requests.post(url, data=json.dumps(payload), headers=headers)
     # return json.loads(res.content)['errorMsg']
     emsg = json.loads(res.content)['errorMsg']
@@ -35,8 +35,8 @@ def recall(pet_id):
 
 def sell(pet_id, amount):
     url = 'https://pet-chain.baidu.com/data/market/salePet'
-    timestramp = int(round(time.time() * 1000))
-    payload = {"petId": pet_id, "amount": amount, "requestId": timestramp, "appId": 1, "tpl": ""}
+    timestamp = int(round(time.time() * 1000))
+    payload = {"petId": pet_id, "amount": amount, "requestId": timestamp, "appId": 1, "tpl": ""}
     res = requests.post(url, data=json.dumps(payload), headers=headers)
     emsg = json.loads(res.content)['errorMsg']
     print '以' + str(amount) + '售出: ' + emsg
